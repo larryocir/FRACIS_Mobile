@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">FRACIS</string>
+
+    <string-array name="civil_status">
+        <item></item>
+        <item>Single</item>
+        <item>Married</item>
+        <item>Widowed</item>
+        <item>Separated</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item></item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="barangay">
+        <item></item>
+        <item>Aldezar</item>
+        <item>Alteza</item>
+        <item>Anib</item>
+        <item>Awayan</item>
+        <item>Azucena</item>
+        <item>Bagong Sirang</item>
+        <item>Binahian</item>
+        <item>Bolo Norte</item>
+        <item>Bolo Sur</item>
+        <item>Bulan</item>
+        <item>Bulawan</item>
+        <item>Cabuyao</item>
+        <item>Caima</item>
+        <item>Calagbangan</item>
+        <item>Calampinay</item>
+        <item>Carayrayan</item>
+        <item>Cotmo</item>
+        <item>Gabi</item>
+        <item>Gaongan</item>
+        <item>Impig</item>
+        <item>Lipilip</item>
+        <item>Lubigan Jr.</item>
+        <item>Lubigan Sr.</item>
+        <item>Malubago</item>
+        <item>Manangle</item>
+        <item>Mangapo</item>
+        <item>Mangga</item>
+        <item>Manlubang</item>
+        <item>Mantila</item>
+        <item>North Centro</item>
+        <item>North Villazar</item>
+        <item>Sagrada Familia</item>
+        <item>Salanda</item>
+        <item>Salvacion</item>
+        <item>San Isidro</item>
+        <item>San Vicente</item>
+        <item>Serranzana</item>
+        <item>South Centro</item>
+        <item>South Villazar</item>
+        <item>Taisan</item>
+        <item>Tara</item>
+        <item>Tible</item>
+        <item>Tula-Tula</item>
+        <item>Vigaan</item>
+        <item>Yabo</item>
+    </string-array>
+</resources>
