@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,15 +20,29 @@ import java.util.Calendar;
 
 public class FarmerRegistration1 extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    TextInputLayout fname, lname, mname, extname, pob, contact, spouse;
     EditText dob;
     DatePickerDialog datePickerDialog;
     Spinner civil_status, genderspin, spinbarangay;
+    Button save;
+
+    GloVar glovar = (GloVar) getApplicationContext();
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_registration1);
+
+        save = findViewById(R.id.btnSave);
+
+        lname = findViewById(R.id.text_input_Fname);
+        mname = findViewById(R.id.text_input_Mname);
+        lname = findViewById(R.id.text_input_Lname);
+        extname = findViewById(R.id.text_input_Ename);
+
+
+
 
         dob = findViewById(R.id.date_picker_dialog);
 
@@ -56,6 +71,7 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String civilstatus = parent.getItemAtPosition(position).toString();
+                glovar.setCivil_Status(civilstatus);
                 Toast.makeText(parent.getContext(), civilstatus, Toast.LENGTH_SHORT).show();
             }
 
@@ -74,6 +90,7 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String gender = parent.getItemAtPosition(position).toString();
+                glovar.setGender(gender);
                 Toast.makeText(parent.getContext(), gender, Toast.LENGTH_SHORT).show();
             }
 
@@ -92,6 +109,7 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String brgy = parent.getItemAtPosition(position).toString();
+                glovar.setBarangay(brgy);
                 Toast.makeText(parent.getContext(), brgy, Toast.LENGTH_SHORT).show();
             }
 
@@ -109,7 +127,7 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
         month +=1;
         String date = dayOfMonth + "/" + month + "/" + year;
         dob.setText(date);
-
+        glovar.setDate_of_Birth(date);
     }
 
 

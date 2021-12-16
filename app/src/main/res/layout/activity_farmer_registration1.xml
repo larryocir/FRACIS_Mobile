@@ -247,6 +247,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/btnSave"
             android:text="Save"
             android:layout_gravity="center_horizontal"
             android:onClick="confirmSave"/>/>
