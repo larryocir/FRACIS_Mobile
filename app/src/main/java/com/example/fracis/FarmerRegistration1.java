@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,9 +42,6 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
         lname = findViewById(R.id.text_input_Lname);
         extname = findViewById(R.id.text_input_Ename);
 
-
-
-
         dob = findViewById(R.id.date_picker_dialog);
 
         Calendar calendar = Calendar.getInstance();
@@ -71,8 +69,16 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String civilstatus = parent.getItemAtPosition(position).toString();
-                glovar.setCivil_Status(civilstatus);
-                Toast.makeText(parent.getContext(), civilstatus, Toast.LENGTH_SHORT).show();
+                if (civilstatus == null){
+                    civilstatus = "";
+                    glovar.setCivil_Status(civilstatus);
+                }else{
+                    glovar.setCivil_Status(civilstatus);
+                    Toast.makeText(parent.getContext(), civilstatus, Toast.LENGTH_SHORT).show();
+                }
+
+
+
             }
 
             @Override
@@ -90,8 +96,14 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String gender = parent.getItemAtPosition(position).toString();
-                glovar.setGender(gender);
-                Toast.makeText(parent.getContext(), gender, Toast.LENGTH_SHORT).show();
+                if (gender == null){
+                    gender = "";
+                    glovar.setGender(gender);
+                }else{
+                    glovar.setGender(gender);
+                    Toast.makeText(parent.getContext(), gender, Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
@@ -109,8 +121,13 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String brgy = parent.getItemAtPosition(position).toString();
-                glovar.setBarangay(brgy);
-                Toast.makeText(parent.getContext(), brgy, Toast.LENGTH_SHORT).show();
+                if (brgy == null){
+                    brgy = "";
+                    glovar.setBarangay(brgy);
+                }else{
+                    glovar.setBarangay(brgy);
+                    Toast.makeText(parent.getContext(), brgy, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -119,6 +136,13 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
             }
         });
 
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent farmform2 = new Intent(FarmerRegistration1.this, FarmerRegistration2.class);
+                startActivity(farmform2);
+            }
+        });
 
     }
 
@@ -126,8 +150,14 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
 
         month +=1;
         String date = dayOfMonth + "/" + month + "/" + year;
-        dob.setText(date);
-        glovar.setDate_of_Birth(date);
+           if (date == null){
+               date = "";
+               glovar.setGender(date);
+           }else{
+               dob.setText(date);
+               glovar.setDate_of_Birth(date);
+           }
+
     }
 
 
