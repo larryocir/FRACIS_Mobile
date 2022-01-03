@@ -3,13 +3,18 @@
     package="com.example.fracis">
 
     <application
-        android:name=".GloVar"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FRACIS">
+        <activity
+            android:name=".FarmerRegistration3"
+            android:exported="true" />
+        <activity
+            android:name=".fetchdata"
+            android:exported="true" />
         <activity
             android:name=".FarmerRegistration2"
             android:exported="true" />

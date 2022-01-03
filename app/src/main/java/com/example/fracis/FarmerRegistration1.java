@@ -26,8 +26,8 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
     DatePickerDialog datePickerDialog;
     Spinner civil_status, genderspin, spinbarangay;
     Button save;
+    DBHelper DB;
 
-    //GloVar glovar = (GloVar) getApplicationContext();
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -35,15 +35,19 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_registration1);
 
+        DB = new DBHelper(this);
 
         save = findViewById(R.id.btnSave);
 
-        lname = findViewById(R.id.text_input_Fname);
+        fname = findViewById(R.id.text_input_Fname);
         mname = findViewById(R.id.text_input_Mname);
         lname = findViewById(R.id.text_input_Lname);
         extname = findViewById(R.id.text_input_Ename);
-
         dob = findViewById(R.id.date_picker_dialog);
+        pob = findViewById(R.id.text_input_pob);
+        contact = findViewById(R.id.text_input_Contactnumber);
+        spouse = findViewById(R.id.text_input_spouse);
+
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -74,6 +78,23 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
         ArrayAdapter<CharSequence> adaptergender = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_spinner_item);
         adaptergender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderspin.setAdapter(adaptergender);
+        genderspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String gen = parent.getItemAtPosition(position).toString();
+                if (gen == "Married"){
+                    spouse.setEnabled(false);
+                }else{
+                    spouse.setEnabled(true);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         //BARANGAY
@@ -84,7 +105,7 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
 
     }
 
-       public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
 
         month +=1;
         String date = dayOfMonth + "/" + month + "/" + year;
@@ -98,12 +119,39 @@ public class FarmerRegistration1 extends AppCompatActivity implements DatePicker
 
     }
 
-    public void confirmSave(View v){
-        String civil_status_text = civil_status.getSelectedItem().toString();
+    public void confirmSave(View v) {
+        /*String civil_status_text = civil_status.getSelectedItem().toString();
         lname.getEditText().setText(civil_status_text);
         String barangay_text = spinbarangay.getSelectedItem().toString();
-        mname.getEditText().setText(barangay_text);
+        mname.getEditText().setText(barangay_text);*/
+        String fnameTXT = fname.getEditText().getText().toString();
+        String mnameTXT = mname.getEditText().getText().toString();
+        String lnameTXT = lname.getEditText().getText().toString();
+        String extnameTXT = extname.getEditText().getText().toString();
+        String barangayTXT = spinbarangay.getSelectedItem().toString();
+        String genderTXT = genderspin.getSelectedItem().toString();
+        String dobTXT = dob.getText().toString();
+        String pobTXT = pob.getEditText().getText().toString();
+        String contactTXT = contact.getEditText().getText().toString();
+        String civilstatusTXT = civil_status.getSelectedItem().toString();
+        String spouseTXT = spouse.getEditText().getText().toString();
+
+
+        Boolean checkinsertdata = DB.insertuserdata(fnameTXT, mnameTXT, lnameTXT, extnameTXT, barangayTXT, genderTXT, dobTXT, pobTXT, contactTXT, civilstatusTXT, spouseTXT);
+        if (checkinsertdata == true) {
+            Toast.makeText(FarmerRegistration1.this, "New Entry Inserted", Toast.LENGTH_SHORT).show();
+
+
+        } else {
+            Toast.makeText(FarmerRegistration1.this, "New Entry Not Inserted", Toast.LENGTH_SHORT).show();
+        }
+        /*Intent farmform = new Intent(FarmerRegistration1.this,FarmerRegistration2.class);
+        startActivity(farmform);*/
+
     }
+
+
+
 
 
 }

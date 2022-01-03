@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 user.requestFocus();
                 closekeyboard();
                     invalid.setVisibility(View.INVISIBLE);
-                    Intent login = new Intent(MainActivity.this, Home.class);
+                    Intent login = new Intent(MainActivity.this, CRUD.class);
                     startActivity(login);
 
             }else{
